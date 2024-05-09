@@ -1,0 +1,137 @@
+[gd_scene load_steps=7 format=3 uid="uid://s6fmyt8toerx"]
+
+[ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://deck_builder_tutorial-season-1-starter-project/deck_builder_tutorial-season-1-starter-project/art/background.png" id="1_lim5n"]
+[ext_resource type="Script" path="res://BattleUI/battle.gd" id="1_moqgt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ou66n"]
+bg_color = Color(0.0235294, 0.0235294, 0.0235294, 0.0470588)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkon1"]
+bg_color = Color(0, 0, 0, 0.72549)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifc3n"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yejr7"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_moqgt")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_lim5n")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="BattleUI" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 208.0
+offset_top = 549.0
+offset_right = 901.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ou66n")
+
+[node name="BattleUI" type="HBoxContainer" parent="BattleUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Attack" type="Button" parent="BattleUI/BattleUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_jkon1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifc3n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifc3n")
+text = "Attack"
+
+[node name="Heal" type="Button" parent="BattleUI/BattleUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_jkon1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifc3n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifc3n")
+text = "Heal"
+
+[node name="Defend" type="Button" parent="BattleUI/BattleUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_jkon1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifc3n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifc3n")
+text = "Defend"
+
+[node name="TextPanel" type="Panel" parent="BattleUI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -123.0
+offset_top = -516.0
+offset_right = 167.0
+offset_bottom = -377.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_yejr7")
+
+[node name="Textbox" type="Label" parent="BattleUI/TextPanel"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 23.0
+offset_right = 581.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 32
+text = "Text here! All you have ever wanted"
+
+[node name="Ticker" type="Label" parent="BattleUI/TextPanel"]
+layout_mode = 0
+offset_left = 925.0
+offset_top = 91.0
+offset_right = 983.0
+offset_bottom = 135.0
+theme_override_font_sizes/font_size = 31
+text = "  >"
