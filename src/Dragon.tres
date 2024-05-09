@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BaseEnemy" load_steps=2 format=3 uid="uid://cxtvysuf2p8xh"]
+
+[ext_resource type="Script" path="res://src/BaseEnemy.gd" id="1_k1yre"]
+
+[resource]
+resource_name = "Dragon"
+script = ExtResource("1_k1yre")
+name = null
+health = null
+damage = null

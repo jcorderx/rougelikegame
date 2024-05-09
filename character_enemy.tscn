@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctwfk78ob1d7s"]
+
+[ext_resource type="Script" path="res://character_enemy.gd" id="1_3832c"]
+[ext_resource type="FontFile" uid="uid://bm6se4efa6xyp" path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/xolonium/xolonium-fonts-4.1/ttf/Xolonium-Regular.ttf" id="1_sukag"]
+[ext_resource type="Texture2D" uid="uid://ukld5o613i0a" path="res://deck_builder_tutorial-season-1-starter-project/deck_builder_tutorial-season-1-starter-project/art/tile_0122.png" id="4_oxd7e"]
+[ext_resource type="Texture2D" uid="uid://bu4wt0hv8176g" path="res://deck_builder_tutorial-season-1-starter-project/deck_builder_tutorial-season-1-starter-project/art/tile_0122_hurt.png" id="5_hf2e1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vebe6"]
+bg_color = Color(0.784314, 0, 0.0823529, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.00784314, 0.00784314, 0.00784314, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10uwc"]
+bg_color = Color(0.196078, 0.72549, 0.0980392, 1)
+border_color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ry7u"]
+atlas = ExtResource("4_oxd7e")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qimix"]
+atlas = ExtResource("4_oxd7e")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sgu7a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ry7u")
+}, {
+"duration": 0.5,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hf2e1")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qimix")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="CharacterEnemy" type="CharacterBody2D"]
+script = ExtResource("1_3832c")
+
+[node name="EnemyContainer" type="VBoxContainer" parent="."]
+offset_left = -122.0
+offset_top = -36.0
+offset_right = 126.0
+offset_bottom = 94.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="EnemyContainer"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_vebe6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_10uwc")
+value = 50.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="EnemyContainer/EnemyHealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -14.0
+offset_right = 34.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_sukag")
+theme_override_font_sizes/font_size = 18
+text = "HP: 50/100"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EnemyContainer"]
+texture_filter = 1
+position = Vector2(122, 87)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_sgu7a")
+animation = &"hurt"
+frame = 2

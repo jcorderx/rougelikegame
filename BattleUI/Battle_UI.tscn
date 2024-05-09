@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bk43va51w1jpu"]
+
+[node name="BattleUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Attack" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(10, 15)
+layout_mode = 0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 169.0
+offset_bottom = 60.0
+color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 168.0
+offset_bottom = 59.0
+text = "Attack"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,117 @@
+[gd_scene load_steps=11 format=3 uid="uid://cxnesltbslynw"]
+
+[ext_resource type="Texture2D" uid="uid://01cnuv5m4n6f" path="res://deck_builder_tutorial-season-1-starter-project/deck_builder_tutorial-season-1-starter-project/art/tile_0112.png" id="1_162qd"]
+[ext_resource type="Texture2D" uid="uid://dr7qs2wdnx74i" path="res://deck_builder_tutorial-season-1-starter-project/deck_builder_tutorial-season-1-starter-project/art/tile_0112_hurt.png" id="2_5fylp"]
+[ext_resource type="Script" path="res://src/Char.gd" id="3_h8f7k"]
+[ext_resource type="FontFile" uid="uid://cndet0e558wud" path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/cmu-typewriter/Typewriter/cmunit.ttf" id="4_aflbp"]
+[ext_resource type="FontFile" uid="uid://bm6se4efa6xyp" path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/xolonium/xolonium-fonts-4.1/ttf/Xolonium-Regular.ttf" id="5_4aepe"]
+
+[sub_resource type="GDScript" id="GDScript_26h66"]
+script/source = "extends CharacterBody2D
+
+
+func _ready():	
+	get_tree().get_root().transparent = true
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0pt7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_162qd")
+}, {
+"duration": 0.5,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5fylp")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_162qd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ex5sc"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0jod"]
+bg_color = Color(0.784314, 0, 0.0823529, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5no7d"]
+bg_color = Color(0.196078, 0.72549, 0.0980392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[node name="Character" type="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(1, 1)
+script = SubResource("GDScript_26h66")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 12)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_f0pt7")
+animation = &"hurt"
+script = ExtResource("3_h8f7k")
+
+[node name="PlayerContainer" type="Panel" parent="."]
+offset_left = -50.0
+offset_top = 236.0
+offset_right = 317.0
+offset_bottom = 294.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex5sc")
+
+[node name="PlayerData" type="VBoxContainer" parent="PlayerContainer"]
+layout_mode = 1
+offset_left = -1.0
+offset_top = 3.0
+offset_right = 79.0
+offset_bottom = 38.0
+
+[node name="PlayerName" type="Label" parent="PlayerContainer/PlayerData"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_aflbp")
+theme_override_font_sizes/font_size = 35
+text = "Dufus"
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="PlayerContainer"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 12.0
+offset_right = 334.0
+offset_bottom = 46.0
+theme_override_styles/background = SubResource("StyleBoxFlat_j0jod")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5no7d")
+value = 50.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="PlayerContainer/PlayerHealthBar"]
+layout_mode = 0
+offset_left = -18.0
+offset_top = -2.0
+offset_right = 185.0
+offset_bottom = 35.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_4aepe")
+theme_override_font_sizes/font_size = 19
+text = "HP: 50/100"
+horizontal_alignment = 1
+vertical_alignment = 1
